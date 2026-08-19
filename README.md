@@ -4,15 +4,36 @@ The site for **Idle Dominion**, served by GitHub Pages from this repository.
 
 Three static pages and a stylesheet. No build step, no dependencies, and **no
 requests to any third party** — not a web font, not an analytics tag, not an
-embed. That is deliberate rather than minimalist: the app's whole selling point
-is that it talks to nobody, and a privacy policy delivered over a page that
-phones home is an argument against itself.
+embed. Still deliberate, and the reason is narrower than it used to be: the app
+now serves one optional advert, so it is no longer true that nothing here talks
+to anybody. What is still true is that **the page explaining that does not**, and
+a privacy policy delivered over a page that phones home is an argument against
+itself.
 
     index.html     the pitch
     privacy.html   linked from App Store Connect as the Privacy Policy URL
     support.html   linked from App Store Connect as the Support URL
     style.css      the game's own palette, taken from Theme/Palette.swift
     CNAME          idledominion.app
+    app-ads.txt    see below
+
+## `app-ads.txt`, which is not optional now there are adverts
+
+One line, naming AdMob as an authorised seller of this app's inventory:
+
+    google.com, pub-6164822901218959, DIRECT, f08c47fec0942fa0
+
+The publisher ID is the one inside `GADApplicationIdentifier` in
+`Config/Info.plist`, and the file is identical to the one in every other
+`*-site` repo here. It has to sit at the **root of the domain App Store Connect
+lists as the developer website**, which is why it lives in this repo rather than
+in the app.
+
+Buyers check it. Without it, inventory reads as unauthorised and a real share of
+the bidding simply does not happen — it costs revenue quietly rather than
+breaking anything, which is the worst way for a file to be missing. AdMob shows
+the crawl result under **Apps → app-ads.txt**; it takes a day or so after the
+domain resolves.
 
 ## Publishing
 
